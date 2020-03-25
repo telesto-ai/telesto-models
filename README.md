@@ -25,3 +25,11 @@ curl http://localhost:9876/
 
 curl -X POST -H "Content-Type: application/json" --data-binary @data/example-input.json http://localhost:9876/
 ```
+
+## Evaluate Model Running in Container
+
+```
+pip install -r requirements-dev.txt
+
+python -m evaluate --api-url http://localhost:9876 --dataset-path data/test-dataset --metric accuracy
+```
