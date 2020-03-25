@@ -42,12 +42,3 @@ class ClassificationModelBase:
         pred_array = self.predict(input_list)
         out_doc = self._postprocess(pred_array)
         return out_doc
-
-
-class RandomCatDogModel(ClassificationModelBase):
-    def __init__(self, model_path):
-        super().__init__(classes=["cat", "dog"], model_path=model_path)
-
-    def predict(self, input_list: List[np.ndarray]) -> np.ndarray:
-        batch_size = len(input_list)
-        return np.array([[0.5 for _ in range(self.class_n)] for _ in range(batch_size)])

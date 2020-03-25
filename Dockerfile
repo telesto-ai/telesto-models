@@ -48,7 +48,5 @@ RUN chmod +x *.sh
 EXPOSE 9876
 
 ENV PYTHONDONTWRITEBYTECODE 1
-ENV MODEL_CLASS telesto.model.RandomCatDogModel
-ENV MODEL_PATH /model.pt
 
 CMD [ "/start-api.sh" ]
