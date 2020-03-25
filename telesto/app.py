@@ -26,8 +26,8 @@ class PredictResource:
 
     @staticmethod
     def _load_model():
-        components = os.environ.get("MODEL_CLASS").split('.')
-        module_name = '.'.join(components[:-1])
+        components = os.environ.get("MODEL_CLASS").split(".")
+        module_name = ".".join(components[:-1])
         module = import_module(module_name)
         class_name = components[-1]
         model_class = getattr(module, class_name)

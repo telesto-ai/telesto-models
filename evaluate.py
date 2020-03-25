@@ -59,11 +59,11 @@ def evaluate_model(api_url, dataset_path, metric_name):
     return score
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Run model evaluation')
-    parser.add_argument('--api-url')
-    parser.add_argument('--dataset-path')
-    parser.add_argument('--metric')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run model evaluation")
+    parser.add_argument("--api-url")
+    parser.add_argument("--dataset-path")
+    parser.add_argument("--metric")
     args = parser.parse_args()
 
     evaluate_model(args.api_url, args.dataset_path, args.metric)
