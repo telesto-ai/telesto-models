@@ -1,4 +1,4 @@
-FROM registry.rocketfuel.pw/telesto/model-api-base:latest
+FROM telesto-ai/model-template-base:latest
 
 # Install all your dependencies here, preferably using just one RUN command
 RUN python -m pip --no-cache-dir install \

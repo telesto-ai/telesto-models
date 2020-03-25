@@ -11,7 +11,12 @@
 * Prepare an archive with all needed files `zip -r example_model.zip example_model`
 
 ## Build Docker Image and Start Container
+Build the base image:
+```
+docker build -t telesto-ai/model-template-base -f Dockerfile .
+```
 
+With this, you can build the image containing your model:
 ```
 docker build -t example/model-api -f example_model/Dockerfile example_model
 
