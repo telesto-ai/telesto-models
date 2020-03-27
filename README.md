@@ -11,15 +11,13 @@
 * Prepare an archive with all needed files `zip -r example_model.zip example_model`
 
 ## Build Docker Image and Start Container
-Build the base image:
-```
-docker build -t telesto-ai/model-template-base -f Dockerfile .
-```
-
-With this, you can build the image containing your model:
+Building the image containing the model:
 ```
 docker build -t example/model-api -f example_model/Dockerfile example_model
+```
 
+Running the container:
+```
 docker run -p 9876:9876 --name model-api --rm example/model-api
 ```
 
@@ -29,4 +27,12 @@ docker run -p 9876:9876 --name model-api --rm example/model-api
 curl http://localhost:9876/
 
 curl -X POST -H "Content-Type: application/json" --data-binary @data/example-input.json http://localhost:9876/
+```
+
+## Evaluate Model Running in Container
+
+```
+pip install -r requirements-dev.txt
+
+python -m evaluate --api-url http://localhost:9876 --dataset-path data/test-dataset --metric accuracy
 ```

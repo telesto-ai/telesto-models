@@ -1,4 +1,4 @@
-FROM telesto-ai/model-template-base:latest
+FROM telestoai/model-api-base:latest
 
 # Install all your dependencies here, preferably using just one RUN command
 RUN python -m pip --no-cache-dir install \
