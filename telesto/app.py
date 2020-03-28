@@ -26,9 +26,9 @@ class PredictResource:
 
     @staticmethod
     def _load_model():
-        try:
-            components = os.environ.get("MODEL_CLASS").split(".")
-        except AttributeError:
+        components = os.environ.get("MODEL_CLASS").split(".")
+
+        if components is None:
             raise EnvironmentError("MODEL_CLASS environment variable not defined, please specify it in the Dockerfile")
 
         module_name = ".".join(components[:-1])
