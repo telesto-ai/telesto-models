@@ -11,10 +11,13 @@
 * Prepare an archive with all needed files `zip -r example_model.zip example_model`
 
 ## Build Docker Image and Start Container
-
+Building the image containing the model:
 ```
 docker build -t example/model-api -f example_model/Dockerfile example_model
+```
 
+Running the container:
+```
 docker run -p 9876:9876 --name model-api --rm example/model-api
 ```
 
