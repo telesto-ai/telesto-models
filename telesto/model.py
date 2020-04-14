@@ -10,6 +10,7 @@ class ClassificationModelBase:
     def __init__(self, classes: List[str], model_path: str):
         self.classes = classes
         self.class_n = len(classes)
+        self.model_path = model_path
 
     def predict(self, input_list: List[np.ndarray]) -> np.ndarray:
         raise NotImplemented
