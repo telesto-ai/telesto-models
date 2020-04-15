@@ -5,6 +5,9 @@ import numpy as np
 from telesto.base_models import ClassificationModelBase
 
 
+CLASSES = []            # add list of class labels here
+
+
 class ClassificationModel(ClassificationModelBase):
     """
     Wrapper class for the model to be served.
@@ -15,12 +18,12 @@ class ClassificationModel(ClassificationModelBase):
         model_path: str, path to the model file
         model: the object representing the model, to be loaded with _load_model()
     """
-    def __init__(self, classes: List, model_path: str):
+    def __init__(self, model_path: str):
         """
         Add your initialization code here.
         Don't remove the super().__init__ call below!
         """
-        super().__init__(classes=classes, model_path=model_path)
+        super().__init__(classes=CLASSES, model_path=model_path)
 
     def _load_model(self, model_path: str):
         """

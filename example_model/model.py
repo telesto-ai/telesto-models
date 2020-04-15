@@ -10,6 +10,9 @@ from torchvision import transforms
 from telesto.base_models import ClassificationModelBase
 
 
+CLASSES = ["on", "off"]
+
+
 def _convert_to_pil(array):
     if array.ndim == 3 and array.shape[-1] == 3:
         return Image.fromarray(array)
@@ -23,8 +26,8 @@ def _convert_to_pil(array):
 
 
 class ExampleClassificationModel(ClassificationModelBase):
-    def __init__(self, classes: List, model_path: str):
-        super().__init__(classes=classes, model_path=model_path)
+    def __init__(self, model_path: str):
+        super().__init__(classes=CLASSES, model_path=model_path)
         self.input_size = 224
         self.data_transform = transforms.Compose(
             [
