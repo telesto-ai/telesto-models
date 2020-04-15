@@ -34,7 +34,6 @@ class ExampleClassificationModel(ClassificationModelBase):
                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
             ]
         )
-        self.model = self._load_model(model_path)
 
     def _load_model(self, model_path: str):
         model = squeezenet1_0()

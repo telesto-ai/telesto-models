@@ -6,13 +6,21 @@ from telesto.model import ClassificationModelBase
 
 
 class ClassificationModel(ClassificationModelBase):
+    """
+    Wrapper class for the model to be served.
+
+    Attributes:
+        classes: list, contains the labels
+        classes_n: int, number of classes
+        model_path: str, path to the model file
+        model: the object representing the model, to be loaded with _load_model()
+    """
     def __init__(self, classes: List, model_path: str):
         """
         Add your initialization code here.
-        Don't remove the code below!
+        Don't remove the super().__init__ call below!
         """
         super().__init__(classes=classes, model_path=model_path)
-        self.model = self._load_model(model_path)
 
     def _load_model(self, model_path: str):
         """
