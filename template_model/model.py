@@ -6,12 +6,12 @@ from telesto.model import ClassificationModelBase
 
 
 class ClassificationModel(ClassificationModelBase):
-    def __init__(self, model_path):
+    def __init__(self, classes: List, model_path: str):
         """
         Add your initialization code here.
         Don't remove the code below!
         """
-        super().__init__(classes=["on", "off"], model_path=model_path)
+        super().__init__(classes=classes, model_path=model_path)
         self.model = self._load_model(model_path)
 
     def _load_model(self, model_path: str):
