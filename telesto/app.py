@@ -40,7 +40,7 @@ class PredictResource:
         if model_path is None:
             raise EnvironmentError("MODEL_PATH environment variable not defined, please specify it in the Dockerfile")
 
-        return model_class(model_path)
+        return model_class(model_path=model_path)
 
     def on_get(self, req, resp):
         doc = {"status": "ok", "host": socket.getfqdn(), "worker.pid": os.getpid()}

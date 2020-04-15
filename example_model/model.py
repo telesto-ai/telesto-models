@@ -7,7 +7,10 @@ import torch.nn as nn
 from torchvision.models import squeezenet1_0
 from torchvision import transforms
 
-from telesto.model import ClassificationModelBase
+from telesto.base_models import ClassificationModelBase
+
+
+CLASSES = ["on", "off"]
 
 
 def _convert_to_pil(array):
@@ -23,8 +26,8 @@ def _convert_to_pil(array):
 
 
 class ExampleClassificationModel(ClassificationModelBase):
-    def __init__(self, model_path):
-        super().__init__(classes=["on", "off"], model_path=model_path)
+    def __init__(self, model_path: str):
+        super().__init__(classes=CLASSES, model_path=model_path)
         self.input_size = 224
         self.data_transform = transforms.Compose(
             [
@@ -34,7 +37,6 @@ class ExampleClassificationModel(ClassificationModelBase):
                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
             ]
         )
-        self.model = self._load_model(model_path)
 
     def _load_model(self, model_path: str):
         model = squeezenet1_0()

@@ -7,11 +7,26 @@ from PIL import Image
 
 
 class ClassificationModelBase:
+    """
+    Base class for the model to be served.
+
+    Attributes:
+        classes: list, contains the labels
+        classes_n: int, number of classes
+        model_path: str, path to the model file
+        model: the object representing the model, to be loaded with _load_model()
+    """
+
     def __init__(self, classes: List[str], model_path: str):
         self.classes = classes
         self.class_n = len(classes)
+        self.model_path = model_path
+        self.model = self._load_model(model_path=model_path)
 
     def predict(self, input_list: List[np.ndarray]) -> np.ndarray:
+        raise NotImplemented
+
+    def _load_model(self, model_path: str):
         raise NotImplemented
 
     def _preprocess(self, doc):
