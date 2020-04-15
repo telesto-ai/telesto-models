@@ -7,7 +7,7 @@ import torch.nn as nn
 from torchvision.models import squeezenet1_0
 from torchvision import transforms
 
-from telesto.model import ClassificationModelBase
+from telesto.base_models import ClassificationModelBase
 
 
 def _convert_to_pil(array):

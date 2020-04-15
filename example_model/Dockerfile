@@ -1,6 +1,6 @@
 FROM telestoai/model-api-base:latest
 
-# model.py contains a class that extends ClassificationModelBase from telesto/model.py
+# base_models.py contains a class that extends ClassificationModelBase from telesto/base_models.py
 COPY *.py /
 COPY model.pt /
 # requirements.txt contains the Python packages required to run predictions

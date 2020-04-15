@@ -2,7 +2,7 @@ from typing import List
 
 import numpy as np
 
-from telesto.model import ClassificationModelBase
+from telesto.base_models import ClassificationModelBase
 
 
 class ClassificationModel(ClassificationModelBase):
