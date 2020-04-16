@@ -7,7 +7,7 @@ import torch.nn as nn
 from torchvision.models import squeezenet1_0
 from torchvision import transforms
 
-from telesto.base_models import ClassificationModelBase
+from telesto.models import ClassificationModelBase
 
 
 CLASSES = ["on", "off"]
