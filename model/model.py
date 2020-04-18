@@ -9,6 +9,11 @@ CLASSES = []            # add list of class labels here
 MODEL_PATH = ""         # specify the path to model weights here
 
 
+"""
+Do not rename the model below!
+"""
+
+
 class ClassificationModel(ClassificationModelBase):
     """
     Wrapper class for the model to be served.
@@ -19,7 +24,7 @@ class ClassificationModel(ClassificationModelBase):
         model_path: str, path to the model file
         model: the object representing the model, to be loaded with _load_model()
     """
-    def __init__(self, model_path: str):
+    def __init__(self):
         """
         Add your initialization code here.
         Don't remove the super().__init__ call below!

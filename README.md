@@ -9,6 +9,9 @@
     - Copy the inference code and model weights into the image
 * Prepare an archive with all needed files `zip -r model.zip model`
 
+[A concrete and worked out example can be found here.](https://github.com/telesto-ai/telesto-base/tree/develop/tests/example_model)
+For a detailed guide, see [https://docs.telesto.ai](https://docs.telesto.ai)!
+
 ## Build Docker Image and Start Container
 Building the image containing the model:
 ```
