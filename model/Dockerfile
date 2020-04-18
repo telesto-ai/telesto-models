@@ -8,7 +8,3 @@ COPY requirements.txt /
 
 # Install all your dependencies here, preferably using just one RUN command
 RUN python -m pip --no-cache-dir install -r requirements.txt
-
-# The default values for the model Python module and the model weights path can be overwritten here
-ENV MODEL_CLASS model.ExampleClassificationModel
-ENV MODEL_PATH /model.pt

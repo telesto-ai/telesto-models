@@ -2,23 +2,27 @@
 
 ## Prepare Model Archive
 
-* Add weights of a model you developed to the project (see `example_model/model.pt`)
-* Add code for inference (see `example_model/model.py`). The model inference class should inherit `telesto.model.ClassificationModelBase` (for classification tasks).
-* Write a custom Dockerfile for the model (see `example_model/Dockerfile`) where you
+* Add weights of a model you developed to the project
+* Add code for inference. The model inference class should inherit `telesto.model.ClassificationModelBase` 
+(for classification tasks). For more information, see [https://github.com/telesto-ai/telesto-base](the telesto-base module),
+which is where the base class is defined.
+* Write a custom Dockerfile for the model where you
     - Install all the needed dependencies
     - Copy the inference code and model weights into the image
-    - If needed, override the `MODEL_CLASS` and `MODEL_PATH` environment variables
-* Prepare an archive with all needed files `zip -r example_model.zip example_model`
+* Prepare an archive with all needed files `zip -r model.zip model`
+
+[A concrete and worked out example can be found here.](https://github.com/telesto-ai/telesto-base/tree/develop/tests/example_model)
+For a detailed guide, see [https://docs.telesto.ai](https://docs.telesto.ai)!
 
 ## Build Docker Image and Start Container
 Building the image containing the model:
 ```
-docker build -t example/model-api -f example_model/Dockerfile example_model
+docker build -t telestoai/model-api -f model/Dockerfile model
 ```
 
 Running the container:
 ```
-docker run -p 9876:9876 --name model-api --rm example/model-api
+docker run -p 9876:9876 --name model-api --rm telestoai/model-api
 ```
 
 ## Call Model API using cURL

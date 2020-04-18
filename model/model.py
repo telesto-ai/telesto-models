@@ -2,10 +2,16 @@ from typing import List
 
 import numpy as np
 
-from telesto.base_models import ClassificationModelBase
+from telesto.models import ClassificationModelBase
 
 
 CLASSES = []            # add list of class labels here
+MODEL_PATH = ""         # specify the path to model weights here
+
+
+"""
+Do not rename the model below!
+"""
 
 
 class ClassificationModel(ClassificationModelBase):
@@ -18,12 +24,12 @@ class ClassificationModel(ClassificationModelBase):
         model_path: str, path to the model file
         model: the object representing the model, to be loaded with _load_model()
     """
-    def __init__(self, model_path: str):
+    def __init__(self):
         """
         Add your initialization code here.
         Don't remove the super().__init__ call below!
         """
-        super().__init__(classes=CLASSES, model_path=model_path)
+        super().__init__(classes=CLASSES, model_path=MODEL_PATH)
 
     def _load_model(self, model_path: str):
         """
