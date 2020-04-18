@@ -6,6 +6,7 @@ from telesto.models import ClassificationModelBase
 
 
 CLASSES = []            # add list of class labels here
+MODEL_PATH = ""         # specify the path to model weights here
 
 
 class ClassificationModel(ClassificationModelBase):
@@ -23,7 +24,7 @@ class ClassificationModel(ClassificationModelBase):
         Add your initialization code here.
         Don't remove the super().__init__ call below!
         """
-        super().__init__(classes=CLASSES, model_path=model_path)
+        super().__init__(classes=CLASSES, model_path=MODEL_PATH)
 
     def _load_model(self, model_path: str):
         """
