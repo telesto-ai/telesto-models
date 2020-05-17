@@ -5,7 +5,7 @@ This serves as a brief guide to help you submit your solutions for telesto.ai co
 
 * Add weights of a model you developed to the project
 * Add code for inference. The model inference class should inherit `telesto.model.ClassificationModelBase` 
-(for classification tasks). For more information, see [https://github.com/telesto-ai/telesto-base](the telesto-base module),
+(for classification tasks). For more information, see [the telesto-base module](https://github.com/telesto-ai/telesto-base),
 which is where the base class is defined.
 * Write a custom Dockerfile for the model where you
     - Install all the needed dependencies
