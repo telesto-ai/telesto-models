@@ -1,4 +1,4 @@
-# Telesto Model API Template Project
+# telesto.ai Model API Template Project
 
 ## Prepare Model Archive
 
