@@ -31,7 +31,7 @@ docker run -p 9876:9876 --name model-api --rm telestoai/model-api
 ```
 curl http://localhost:9876/
 
-curl -X POST -H "Content-Type: application/json" --data-binary @data/example-input.json http://localhost:9876/
+curl -X POST -H "Content-Type: application/json" --data-binary @example_data/example_input.json http://localhost:9876/
 ```
 
 ## Evaluating model running in a container
@@ -39,7 +39,7 @@ curl -X POST -H "Content-Type: application/json" --data-binary @data/example-inp
 ```
 pip install -r requirements-dev.txt
 
-python -m evaluate --api-url http://localhost:9876 --dataset-path data/test-dataset --metric accuracy
+python -m evaluate --api-url http://localhost:9876 --dataset-path example_data/test_dataset --metric accuracy
 ```
 
 ## An example model
@@ -48,4 +48,5 @@ A fully worked out example can be found in the `example_model` folder. You can t
 docker build -t telestoai/model-api-example -f example_model/Dockerfile example_model
 docker run -p 9876:9876 --name model-api --rm telestoai/model-api-example
 curl http://localhost:9876/
+curl -X POST -H "Content-Type: application/json" --data-binary @example_data/example_input.json http://localhost:9876/
 ```

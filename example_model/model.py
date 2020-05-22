@@ -1,16 +1,14 @@
 from typing import List
 
-from PIL import Image
 import numpy as np
 import torch
 import torch.nn as nn
-from torchvision.models import squeezenet1_0
-from torchvision import transforms
-
+from PIL import Image
 from telesto.models import ClassificationModelBase
+from torchvision import transforms
+from torchvision.models import squeezenet1_0
 
-
-CLASSES = ["on", "off"]
+CLASSES = ["healthy", "infected"]
 MODEL_PATH = 'model.pt'
 
 
