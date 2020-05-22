@@ -49,11 +49,11 @@ METRIC_FUNCTIONS = {"accuracy": estimate_accuracy}
 def evaluate_model(api_url, dataset_path, metric_name):
     labels_path = Path(dataset_path) / "labels.tsv"
     labels_df = pd.read_csv(labels_path, sep="\t")
-    image_paths = [Path(dataset_path) / p for p in labels_df.path.values]
+    image_paths = [Path(dataset_path) / p for p in labels_df["id"].values]
 
     predictions = run_model_inference(api_url, image_paths)
 
-    labels = labels_df["class"].values
+    labels = labels_df["label"].values
     score = METRIC_FUNCTIONS[metric_name](predictions, labels)
     print(f"Model performance: {metric_name}={score:.4f}")
     return score
