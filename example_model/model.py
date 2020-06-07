@@ -1,12 +1,12 @@
 from typing import List
 
 import numpy as np
+from PIL import Image
 import torch
 import torch.nn as nn
-from PIL import Image
+import torchvision
+
 from telesto.models import ClassificationModelBase
-from torchvision import transforms
-from torchvision.models import squeezenet1_0
 
 CLASSES = ["healthy", "infected"]
 MODEL_PATH = 'model.pt'
@@ -25,20 +25,20 @@ def _convert_to_pil(array):
 
 
 class ClassificationModel(ClassificationModelBase):
-    def __init__(self):
-        super().__init__(classes=CLASSES, model_path=MODEL_PATH)
+    def __init__(self, model_path=MODEL_PATH):
+        super().__init__(classes=CLASSES, model_path=model_path)
         self.input_size = 224
-        self.data_transform = transforms.Compose(
+        self.data_transform = torchvision.transforms.Compose(
             [
-                transforms.Resize(self.input_size),
-                transforms.ToTensor(),
-                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                torchvision.transforms.Resize(self.input_size),
+                torchvision.transforms.ToTensor(),
+                torchvision.transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
             ]
         )
 
     def _load_model(self, model_path: str):
-        model = squeezenet1_0()
-        model.classifier[1] = nn.Conv2d(512, self.class_n, kernel_size=(1, 1), stride=(1, 1))
+        model = torchvision.models.resnet18()
+        model.fc = nn.Linear(512, self.class_n)
         model.num_classes = self.class_n
 
         with open(model_path, "rb") as fp:
