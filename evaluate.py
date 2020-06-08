@@ -49,7 +49,7 @@ METRIC_FUNCTIONS = {"accuracy": estimate_accuracy}
 def evaluate_model(api_url, dataset_path, metric_name):
     labels_path = Path(dataset_path) / "labels.tsv"
     labels_df = pd.read_csv(labels_path, sep="\t")
-    image_paths = [Path(dataset_path) / p for p in labels_df["id"].values]
+    image_paths = [Path(dataset_path) / p for p in labels_df["path"].values]
 
     predictions = run_model_inference(api_url, image_paths)
 
