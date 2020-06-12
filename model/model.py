@@ -52,7 +52,7 @@ class ClassificationModel(ClassificationModelBase):
         The return value should be a list of numpy arrays, each element should contain
         the corresponding prediction probabilities.
 
-        If your model produces labels but not prediciton probabilities, please one-hot
+        If your model produces labels but not prediction probabilities, please one-hot
         encode the result. You can do this for instance with
 
         one_hot_encoded = np.eye(self.class_n)[pred]
