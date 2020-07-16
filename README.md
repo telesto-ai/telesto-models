@@ -18,7 +18,7 @@ For a detailed guide, see [https://docs.telesto.ai](https://docs.telesto.ai)!
 ## Building Docker image and starting the container
 Building the image containing the model:
 ```
-docker build -t telestoai/model-api -f model/Dockerfile .
+docker build -t telestoai/model-api model
 ```
 
 Running the container:
@@ -45,7 +45,7 @@ python -m evaluate --api-url http://localhost:9876 --dataset-path example_data/t
 ## An example model
 A fully worked out example can be found in the `example_model` folder. You can try it out just like your model as well, using the commands above:
 ```
-docker build -t telestoai/model-api-example -f example_model/Dockerfile .
+docker build -t telestoai/model-api-example example_model
 docker run -p 9876:9876 --name model-api --rm telestoai/model-api-example
 curl http://localhost:9876/
 curl -X POST -H "Content-Type: application/json" --data-binary @example_data/example_input.json http://localhost:9876/

@@ -17,12 +17,6 @@ Do not rename the model below!
 class ClassificationModel(ClassificationModelBase):
     """
     Wrapper class for the model to be served.
-
-    Attributes:
-        classes: list, contains the labels
-        classes_n: int, number of classes
-        model_path: str, path to the model file
-        model: the object representing the model, to be loaded with _load_model()
     """
     def __init__(self):
         """

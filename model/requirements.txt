@@ -1,1 +1,2 @@
 # You should add the required Python packages here
+telesto-base
