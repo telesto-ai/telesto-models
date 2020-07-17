@@ -1,3 +1,4 @@
+telesto-base
 requests
 pandas
 sklearn

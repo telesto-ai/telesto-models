@@ -1,4 +1,3 @@
-telesto-base
 # You should add the required Python packages here
 numpy
 Pillow
