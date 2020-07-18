@@ -1,3 +1,4 @@
+# You should add the required Python packages here
 numpy
 Pillow
 -f https://download.pytorch.org/whl/torch_stable.html
