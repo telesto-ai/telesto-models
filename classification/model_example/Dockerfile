@@ -18,3 +18,5 @@ COPY . .
 
 # Installing dependencies
 RUN python -m pip --no-cache-dir install -r requirements.txt
+
+CMD [ "classification" ]
