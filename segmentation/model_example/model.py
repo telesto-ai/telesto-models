@@ -1,8 +1,6 @@
-import os
 from itertools import product
 
 import numpy as np
-import requests
 import torch
 import torchvision.transforms.functional as TF
 from telesto.apps.segmentation import ImageStorage
@@ -11,15 +9,6 @@ from unet import UNet
 
 CLASSES = ["fg", "bg"]
 MODEL_PATH = "model.pt"
-MODEL_URL = "https://telesto-ai-content.fra1.digitaloceanspaces.com/example-models/segmentation/model.pt"
-
-# download the model if it is not available
-if not os.path.exists(MODEL_PATH):
-    resp = requests.get(MODEL_URL)
-
-    with open("model.pt", "wb") as model_file:
-        model_file.write(resp.content)
-
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
@@ -28,9 +17,10 @@ class SegmentationModel(SegmentationModelBase):
     def __init__(self, storage: ImageStorage):
         super().__init__(classes=CLASSES, model_path=MODEL_PATH, storage=storage)
 
-    def _load_model(self, model_path: str):
-        self.model = UNet(3, 3)
-        self.model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+    def _load_model(self, model_path: str) -> object:
+        model = UNet(3, 3)
+        model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+        return model.eval()
 
     def predict_tile(self, input: np.ndarray) -> np.ndarray:
         """
@@ -60,6 +50,9 @@ class SegmentationModel(SegmentationModelBase):
             output: numpy.ndarray of shape (height, width), containing the label-encoded
                 mask
         """
+        if input.ndim == 2:
+            input = np.stack([input] * 3, axis=2)
+
         input_res = input.shape
 
         # placeholder for output
@@ -72,7 +65,7 @@ class SegmentationModel(SegmentationModelBase):
 
         # predictions
         for slice in tile:
-            in_tile = image[slice[0]:slice[0] + tile_res[0], slice[1]:slice[1] + tile_res[1], :]
+            in_tile = input[slice[0]:slice[0] + tile_res[0], slice[1]:slice[1] + tile_res[1], :]
             out_tile = self.predict_tile(in_tile)
             output[slice[0]:slice[0] + tile_res[0], slice[1]:slice[1] + tile_res[1]] = out_tile
 

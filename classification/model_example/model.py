@@ -36,7 +36,7 @@ class ClassificationModel(ClassificationModelBase):
             ]
         )
 
-    def _load_model(self, model_path: str):
+    def _load_model(self, model_path: str) -> object:
         model = torchvision.models.resnet18()
         model.fc = nn.Linear(512, self.class_n)
         model.num_classes = self.class_n

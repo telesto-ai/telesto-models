@@ -131,3 +131,4 @@ dmypy.json
 .idea
 
 /local/
+/segmentation/model_example/model.pt
