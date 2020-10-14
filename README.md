@@ -59,12 +59,6 @@ curl -H "Content-Type:application/json" -i http://localhost:9876/jobs/b741bd1976
 }
 ```
 
-## Evaluating classification model running in container
-```
-pip install -r requirements-dev.txt
-python -m evaluate --api-url http://localhost:9876 --dataset-path classification/example_data/test_dataset --metric accuracy
-```
-
 ## An example classification model
 A fully worked out example of a classification model can be found in the `classification/example_model` directory. You can try it out just like your model as well, using the commands:
 ```
@@ -93,4 +87,18 @@ curl -X POST -H "Content-Type:application/json" --data-binary @segmentation/exam
     http://localhost:9876/jobs
 
 curl -H "Content-Type:application/json" -i http://localhost:9876/jobs/<job_id>
+```
+
+## Evaluating classification model running in container
+```
+pip install -r requirements.txt
+python classification/evaluate.py --api-url http://localhost:9876 \
+    --dataset-path classification/example_data/test_dataset --metric accuracy
+```
+
+## Evaluating segmentation model running in container
+```
+pip install -r requirements.txt
+python segmentation/evaluate.py --api-url http://localhost:9876 \
+    --dataset-path segmentation/example_data/test_dataset --class-n 3
 ```

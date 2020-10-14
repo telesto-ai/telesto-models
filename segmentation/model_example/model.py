@@ -7,7 +7,7 @@ from telesto.apps.segmentation import ImageStorage
 from telesto.models import SegmentationModelBase
 from unet import UNet
 
-CLASSES = ["fg", "bg"]
+CLASSES = ["background", "hypocotyl", "non-hypocotyl"]
 MODEL_PATH = "model.pt"
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
