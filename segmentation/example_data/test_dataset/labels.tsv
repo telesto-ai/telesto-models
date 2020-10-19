@@ -1,2 +1,2 @@
 id	group	image_path	mask_path
-IMG_1501	brachypodium	images/brachypodium/IMG_1501.png	masks/brachypodium/IMG_1501.png
+IMG_1501	arabidopsis	images/arabidopsis/3W5_1_6006.png	masks/arabidopsis/3W5_1_6006.png
