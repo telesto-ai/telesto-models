@@ -14,6 +14,12 @@ from telesto.apps.segmentation import image_to_base64
 
 
 def jaccard(y_pred: np.ndarray, y_true: np.ndarray) -> float:
+    """Compute Jaccard (IoU) metric.
+
+    Args:
+        y_pred: 2d array of bool or int [0, 1] values
+        y_true: 2d array of bool or int [0, 1] values
+    """
     intersection = (y_pred * y_true).sum()
     union_plus_intersection = y_true.sum() + y_pred.sum()
     return intersection / (union_plus_intersection - intersection)
