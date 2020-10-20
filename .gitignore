@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 
 .idea
+
+/local/
+/segmentation/model_example/model.pt
