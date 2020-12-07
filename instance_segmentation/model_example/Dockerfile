@@ -19,5 +19,3 @@ RUN python -m pip --no-cache-dir install -r requirements.txt
 
 # Copying files to the image
 COPY . .
-
-CMD [ "segmentation" ]

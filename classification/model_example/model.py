@@ -9,7 +9,7 @@ import torchvision
 from telesto.models import ClassificationModelBase
 
 CLASSES = ["healthy", "infected"]
-MODEL_PATH = 'model.pt'
+MODEL_PATH = "model.pt"
 
 
 def _convert_to_pil(array):
@@ -38,8 +38,8 @@ class ClassificationModel(ClassificationModelBase):
 
     def _load_model(self, model_path: str) -> object:
         model = torchvision.models.resnet18()
-        model.fc = nn.Linear(512, self.class_n)
-        model.num_classes = self.class_n
+        model.fc = nn.Linear(512, len(self.classes))
+        model.num_classes = len(self.classes)
 
         with open(model_path, "rb") as fp:
             model.load_state_dict(torch.load(fp))
