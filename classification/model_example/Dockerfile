@@ -14,6 +14,7 @@ FROM telestoai/model-api-base:latest
 WORKDIR /root
 
 # Installing dependencies
+COPY requirements.txt .
 RUN python -m pip --no-cache-dir install -r requirements.txt
 
 # Copying files to the image
