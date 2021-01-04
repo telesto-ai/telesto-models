@@ -10,7 +10,12 @@ import pandas as pd
 from PIL import Image
 import requests
 
-from telesto.apps.segmentation import image_to_base64
+
+def image_to_base64(image: Image) -> bytes:
+    fp = io.BytesIO()
+    image.save(fp, format="PNG")
+    fp.seek(0)
+    return base64.b64encode(fp.read())
 
 
 def jaccard(y_pred: np.ndarray, y_true: np.ndarray) -> float:
