@@ -14,5 +14,5 @@ class ObjectDetectionModel(ObjectDetectionModelBase):
     def _load_model(self, model_path: str):
         pass
 
-    def predict(self, input: np.ndarray) -> List[DetectionObject]:
-        return [DetectionObject(BBox(0, 0, 9, 9))]
+    def predict(self, input: List[np.ndarray]) -> List[List[DetectionObject]]:
+        return [[DetectionObject(BBox(0, 0, 9, 9))]]
